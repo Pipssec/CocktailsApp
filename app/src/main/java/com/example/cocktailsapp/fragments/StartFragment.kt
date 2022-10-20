@@ -1,4 +1,4 @@
-package com.example.cocktailsapp.startfragment
+package com.example.cocktailsapp.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,7 +10,6 @@ import com.example.cocktailsapp.R
 import com.example.cocktailsapp.databinding.FragmentStartBinding
 
 class StartFragment: Fragment() {
-
     private lateinit var binding: FragmentStartBinding
 
     override fun onCreateView(
@@ -26,6 +25,12 @@ class StartFragment: Fragment() {
         val picture = binding.ivShakerPicture
         AnimationUtils.loadAnimation(context,R.anim.my_animation).also {
             picture.startAnimation(it)
+        }
+        binding.btnFindByName.setOnClickListener{
+            activity?.supportFragmentManager?.beginTransaction()
+                ?.addToBackStack(null)
+                ?.replace(R.id.activity_container, FindByNameFragment())
+                ?.commit()
         }
     }
 }

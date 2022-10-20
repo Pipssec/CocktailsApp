@@ -3,7 +3,7 @@ package com.example.cocktailsapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.cocktailsapp.databinding.ActivityMainBinding
-import com.example.cocktailsapp.startfragment.StartFragment
+import com.example.cocktailsapp.fragments.StartFragment
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding

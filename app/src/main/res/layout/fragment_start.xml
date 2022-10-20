@@ -6,9 +6,39 @@
 
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/iv_shakerPicture"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/cocktail_shaker_vector_illustration_216355427" />
+
+    <Button
+        android:id="@+id/btn_findByName"
+        android:layout_width="200dp"
+        android:text="Find by Name"
+        android:layout_height="50dp"
+        app:layout_constraintTop_toBottomOf="@+id/iv_shakerPicture"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        android:layout_marginTop="100dp"/>
+    <Button
+        android:id="@+id/btn_findByIngredient"
+        android:layout_width="200dp"
+        android:text="Find By Ingredient"
+        android:layout_height="50dp"
+        app:layout_constraintTop_toBottomOf="@+id/btn_findByName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"/>
+    <Button
+        android:id="@+id/btn_favorite"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:text="My Favorite"
+        app:layout_constraintTop_toBottomOf="@+id/btn_findByIngredient"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

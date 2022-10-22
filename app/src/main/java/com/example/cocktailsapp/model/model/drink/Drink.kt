@@ -1,4 +1,4 @@
-package com.example.cocktailsapp.model
+package com.example.cocktailsapp.model.model.drink
 
 data class Drink(
     val dateModified: String,

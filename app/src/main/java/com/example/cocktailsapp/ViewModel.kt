@@ -1,25 +1,24 @@
-package com.example.cocktailsapp.model
+package com.example.cocktailsapp
 
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.cocktailsapp.model.model.drink.Drink
+import com.example.cocktailsapp.model.model.ingredient.IngredientX
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class DrinkViewModel: ViewModel() {
-    private val selected  = MutableLiveData<Drink>()
-    val result = MutableLiveData<List<Drink>?>()
+class ViewModel: ViewModel() {
+    val selected  = MutableLiveData<Drink>()
+    val resultDrink = MutableLiveData<List<Drink>?>()
+    val resultIngredientX = MutableLiveData<List<IngredientX>?>()
 
     fun select(drink: Drink){
         selected.value = drink
     }
 
-    init {
-        getResultByName("margarita")
-        getResulByIngredient("Vodka")
-    }
 
     fun getResultByName(name: String){
         provideApi().getCocktailByName(name).enqueue(object: Callback<Map<String, List<Drink>>> {
@@ -31,7 +30,7 @@ class DrinkViewModel: ViewModel() {
                 if (response.isSuccessful){
                     val resp = response.body()
                     if (resp != null) {
-                        result.value = resp["drinks"]
+                        resultDrink.value = resp["drinks"]
                     }
                 }
             }
@@ -41,21 +40,21 @@ class DrinkViewModel: ViewModel() {
 
         })
     }
-    fun getResulByIngredient(name: String){
-        provideApi().getCocktailByIngredient(name).enqueue(object: Callback<Map<String, List<Drink>>> {
+    fun getResultByIngredient(name: String){
+        provideApi().getCocktailByIngredient(name).enqueue(object: Callback<Map<String, List<IngredientX>>> {
             override fun onResponse(
-                call: Call<Map<String, List<Drink>>>,
-                response: Response<Map<String, List<Drink>>>,
+                call: Call<Map<String, List<IngredientX>>>,
+                response: Response<Map<String, List<IngredientX>>>,
             ) {
                 if (response.isSuccessful){
                     val resp = response.body()
                     if (resp != null) {
-                        result.value = resp["drinks"]
+                        resultIngredientX.value = resp["ingredients"]
                     }
                 }
             }
 
-            override fun onFailure(call: Call<Map<String, List<Drink>>>, t: Throwable) {
+            override fun onFailure(call: Call<Map<String, List<IngredientX>>>, t: Throwable) {
                 Log.e("RetrofitViewModel", t.message.toString())
             }
 

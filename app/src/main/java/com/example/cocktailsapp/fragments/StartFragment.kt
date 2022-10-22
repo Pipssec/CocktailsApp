@@ -16,7 +16,7 @@ class StartFragment: Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentStartBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
@@ -30,6 +30,12 @@ class StartFragment: Fragment() {
             activity?.supportFragmentManager?.beginTransaction()
                 ?.addToBackStack(null)
                 ?.replace(R.id.activity_container, FindByNameFragment())
+                ?.commit()
+        }
+        binding.btnFindByIngredient.setOnClickListener{
+            activity?.supportFragmentManager?.beginTransaction()
+                ?.addToBackStack(null)
+                ?.replace(R.id.activity_container, FindIngredientInfoFragment())
                 ?.commit()
         }
     }

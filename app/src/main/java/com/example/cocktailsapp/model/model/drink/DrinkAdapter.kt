@@ -1,4 +1,4 @@
-package com.example.cocktailsapp.model
+package com.example.cocktailsapp.model.model.drink
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -15,14 +15,18 @@ class DrinkAdapter(private val list: List<Drink>, private val delegate: (Drink) 
 
 
 
-        fun bind(drink: Drink, holder: ViewHolder){
+        fun bind(delegate: (Drink) -> Unit, drink: Drink, holder: ViewHolder){
             nameDrink.text = drink.strDrink
             Picasso.with(holder.itemView.context)
                 .load(drink.strDrinkThumb)
                 .fit()
                 .error(R.drawable.ic_baseline_error_24)
                 .into(imageDrink)
+            imageDrink.setOnClickListener{
+                delegate(drink)
+            }
         }
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -31,7 +35,7 @@ class DrinkAdapter(private val list: List<Drink>, private val delegate: (Drink) 
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-       holder.bind(list[position], holder)
+       holder.bind(delegate,list[position], holder)
     }
 
     override fun getItemCount(): Int = list.size

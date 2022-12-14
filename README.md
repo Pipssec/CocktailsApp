@@ -1,6 +1,7 @@
 # CocktailsApp
-The Project in progress development /n
-MVVM
-Retrofit
-RecyclerView
-LiveData
+The Project in progress development:
+MVVM,
+Retrofit,
+RecyclerView,
+LiveData,
+Animation
